@@ -1,0 +1,9 @@
+/*
+What we need to add:
+
+A form at the top with two inputs — one for the title, one for the content — and a save button. This will call our POST endpoint.
+
+A list below that shows all the existing notes. This will call our GET endpoint when the page loads.
+
+Each note in the list needs an edit button and a delete button. Those will call PUT and DELETE.
+*/
