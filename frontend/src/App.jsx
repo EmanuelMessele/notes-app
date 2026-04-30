@@ -9,14 +9,14 @@ function App(){
 
 
   useEffect(() => { // runs when components loads
-    fetch('http://localhost:3000/notes')
+    fetch(`${import.meta.env.VITE_API_URL}/notes`)
     .then(res => res.json())
     .then(data => setNotes(data))
   }, []) // [] --> dependency array, if we leave it empty, this useEffect will only run once when the component loads, if we put something in the array, it will run every time that thing changes, like [title] --> this useEffect will run every time the title changes
 
   const handleSubmit = async (e) => {
     e.preventDefault() // stops from refreshing the page when we submit 
-    const response = await fetch('http://localhost:3000/notes', {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/notes`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ title, content })
@@ -28,14 +28,14 @@ function App(){
   }
 
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:3000/notes/${id}`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/notes/${id}`, {
       method: 'DELETE'
     })
     setNotes(notes.filter(note => note.id !== id)) // keep all the notes that don't match the id, delete the notes that do match, send new array of non deleted notes to setNotes --> React rerenders
     }
 
   const handleUpdate = async (id) => {
-    await fetch(`http://localhost:3000/notes/${id}`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/notes/${id}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ title, content })
