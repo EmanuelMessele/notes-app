@@ -48,7 +48,7 @@ function App(){
 
   return (
     <div>
-      <h1>Notes App</h1>
+      <h1>Notes App 🚀</h1>
 
       <form onSubmit = {handleSubmit}>
         <input 
